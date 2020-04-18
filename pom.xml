@@ -30,9 +30,26 @@
 			<version>1.13-R0.1-SNAPSHOT</version>
 			<scope>provided</scope>
 		</dependency>
+		<dependency>
+			<groupId>fr.pederobien</groupId>
+			<artifactId>minecraft-managers</artifactId>
+			<version>1.0</version>
+		</dependency>
 	</dependencies>
 	
 	<build>
+		<finalName>minecraft-dictionary-v${project.version}</finalName>
+		<sourceDirectory>src/main/java</sourceDirectory>
+		<resources>
+			<resource>
+				<targetPath>.</targetPath>
+				<filtering>true</filtering>
+				<directory>${basedir}/src/main/resources/</directory>
+				<includes>
+					<include>plugin.yml</include>
+				</includes>
+			</resource>
+		</resources>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -53,19 +70,18 @@
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-dependency-plugin</artifactId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>3.2.0</version>
 				<executions>
 					<execution>
-						<id>copy-dependencies</id>
-						<phase>prepare-package</phase>
+						<phase>package</phase>
 						<goals>
-							<goal>copy-dependencies</goal>
+							<goal>single</goal>
 						</goals>
 						<configuration>
-							<outputDirectory>${project.build.directory}/classes/lib</outputDirectory>
-							<overWriteReleases>false</overWriteReleases>
-							<overWriteSnapshots>false</overWriteSnapshots>
-							<overWriteIfNewer>true</overWriteIfNewer>
+							<descriptors>
+								<descriptor>src/main/resources/maven-assembly-plugin-descriptor.xml</descriptor>
+							</descriptors>
 						</configuration>
 					</execution>
 				</executions>
