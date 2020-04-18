@@ -19,12 +19,8 @@ public class NotEnoughArgumentsException extends AbstractDictionaryMessageExcept
 	public String getMessage() {
 		StringJoiner joiner = new StringJoiner(", ");
 		joiner.add("Not enough arguments");
-		joiner.add("{Plugin=" + getEvent().getPlugin().getName() + "}");
+		joiner.add(getEvent().toString());
 		joiner.add(getDictionary().toString());
-		joiner.add("{Code=" + getEvent().getCode() + "}");
-		StringJoiner joinerBis = new StringJoiner(" ", "{Args={", "}}");
-		for (String arg : getEvent().getArgs())
-			joinerBis.add(arg);
 		joiner.add("\n{Message=" + getDictionaryMessage() + "}");
 		return joiner.toString();
 	}

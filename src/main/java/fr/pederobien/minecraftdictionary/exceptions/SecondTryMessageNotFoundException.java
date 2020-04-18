@@ -22,14 +22,10 @@ public class SecondTryMessageNotFoundException extends AbstractDictionaryMessage
 	public String getMessage() {
 		StringJoiner joiner = new StringJoiner(", ");
 		joiner.add("Message not found twice");
-		joiner.add("{Plugin=" + getEvent().getPlugin().getName() + "}");
-		joiner.add("{Code=" + getEvent().getCode() + "}");
-		StringJoiner joinerBis = new StringJoiner(" ", "{Args={", "}}");
-		for (String arg : getEvent().getArgs())
-			joinerBis.add(arg);
+		joiner.add(getEvent().toString());
 		joiner.add("\n{First try: Locale={" + getFirstLocale() + "}, dictionary=" + getDictionary() + "}");
 		joiner.add("\n{Second try: Locale={" + getSecondLocale() + "}, dictionary=" + getSecondDictionary() + "}");
-		return joiner.add(joinerBis.toString()).toString();
+		return joiner.toString();
 	}
 
 	/**

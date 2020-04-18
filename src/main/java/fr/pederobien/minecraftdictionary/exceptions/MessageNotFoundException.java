@@ -16,12 +16,8 @@ public class MessageNotFoundException extends AbstractDictionaryMessageException
 	public String getMessage() {
 		StringJoiner joiner = new StringJoiner(", ");
 		joiner.add("No associated message");
-		joiner.add("{Plugin=" + getEvent().getPlugin().getName() + "}");
+		joiner.add(getEvent().toString());
 		joiner.add(getDictionary().toString());
-		joiner.add("{Code=" + getEvent().getCode() + "}");
-		StringJoiner joinerBis = new StringJoiner(" ", "{Args={", "}}");
-		for (String arg : getEvent().getArgs())
-			joinerBis.add(arg);
 		return joiner.toString();
 	}
 }
