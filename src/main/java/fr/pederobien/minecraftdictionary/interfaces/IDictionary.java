@@ -3,6 +3,9 @@ package fr.pederobien.minecraftdictionary.interfaces;
 import java.util.List;
 import java.util.Locale;
 
+import fr.pederobien.minecraftdictionary.exceptions.MessageNotFoundException;
+import fr.pederobien.minecraftdictionary.exceptions.NotEnoughArgumentsException;
+
 public interface IDictionary {
 
 	/**
@@ -17,6 +20,9 @@ public interface IDictionary {
 	 * @param event The event used to get the message.
 	 * 
 	 * @return The associated message.
+	 * 
+	 * @throws MessageNotFoundException    if there is not message associated to the code in the given event.
+	 * @throws NotEnoughArgumentsException if the array from the given event does not contains enough argument for the message.
 	 */
 	String getMessage(IMessageEvent event);
 
