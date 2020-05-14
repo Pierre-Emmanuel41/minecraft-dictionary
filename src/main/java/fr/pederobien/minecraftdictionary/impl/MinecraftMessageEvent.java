@@ -13,7 +13,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	private Player player;
 	private IMinecraftMessageCode code;
 
-	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, String[] args) {
+	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, String... args) {
 		super(PlayerManager.getPlayerLocale(player), code, args);
 		this.player = player;
 		this.code = code;
