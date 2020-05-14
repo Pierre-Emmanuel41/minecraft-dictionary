@@ -1,8 +1,9 @@
 package fr.pederobien.minecraftdictionary.interfaces;
 
+import fr.pederobien.dictionary.interfaces.IMessageCode;
 import fr.pederobien.minecraftdictionary.impl.Permission;
 
-public interface IMessageCode {
+public interface IMinecraftMessageCode extends IMessageCode {
 
 	/**
 	 * @return The permission used to send the message.

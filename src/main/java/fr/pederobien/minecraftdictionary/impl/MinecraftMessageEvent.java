@@ -3,22 +3,20 @@ package fr.pederobien.minecraftdictionary.impl;
 import java.util.StringJoiner;
 
 import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
-import fr.pederobien.minecraftdictionary.interfaces.IMessageCode;
-import fr.pederobien.minecraftdictionary.interfaces.IMessageEvent;
+import fr.pederobien.dictionary.impl.MessageEvent;
+import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageCode;
+import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageEvent;
+import fr.pederobien.minecraftmanagers.PlayerManager;
 
-public class MessageEvent implements IMessageEvent {
+public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMessageEvent {
 	private Player player;
-	private Plugin plugin;
-	private IMessageCode code;
-	private String[] args;
+	private IMinecraftMessageCode code;
 
-	public MessageEvent(Player player, Plugin plugin, IMessageCode code, String[] args) {
+	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, String[] args) {
+		super(PlayerManager.getPlayerLocale(player), code, args);
 		this.player = player;
-		this.plugin = plugin;
 		this.code = code;
-		this.args = args;
 	}
 
 	@Override
@@ -27,25 +25,15 @@ public class MessageEvent implements IMessageEvent {
 	}
 
 	@Override
-	public Plugin getPlugin() {
-		return plugin;
-	}
-
-	@Override
-	public IMessageCode getCode() {
+	public IMinecraftMessageCode getCode() {
 		return code;
-	}
-
-	@Override
-	public String[] getArgs() {
-		return args;
 	}
 
 	@Override
 	public String toString() {
 		StringJoiner joiner = new StringJoiner(", ", "{MessageEvent=", "}");
-		joiner.add("{Plugin=" + getPlugin().getName() + "}");
 		joiner.add("{Player=" + getPlayer().getName() + "}");
+		joiner.add("{Locale=" + getLocale() + "}");
 		joiner.add("{Code=" + getCode() + "}");
 		StringJoiner joinerBis = new StringJoiner(" ", "{Args={", "}}");
 		for (String arg : getArgs())

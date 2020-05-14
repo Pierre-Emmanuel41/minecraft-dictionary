@@ -4,31 +4,32 @@ import java.util.stream.Stream;
 
 import org.bukkit.entity.Player;
 
-import fr.pederobien.minecraftdictionary.interfaces.IDictionaryContext;
-import fr.pederobien.minecraftdictionary.interfaces.IDictionaryManager;
-import fr.pederobien.minecraftdictionary.interfaces.IMessageEvent;
-import fr.pederobien.minecraftdictionary.interfaces.INotificationCenter;
+import fr.pederobien.dictionary.impl.DictionaryManager;
+import fr.pederobien.dictionary.interfaces.IDictionaryContext;
+import fr.pederobien.dictionary.interfaces.IDictionaryManager;
+import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageEvent;
+import fr.pederobien.minecraftdictionary.interfaces.IMinecraftNotificationCenter;
 import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 
-public class NotificationCenter implements INotificationCenter {
+public class NotificationCenter implements IMinecraftNotificationCenter {
 	private IDictionaryManager dictionaryManager;
 
 	private NotificationCenter() {
 		dictionaryManager = new DictionaryManager();
 	}
 
-	public static INotificationCenter getInstance() {
+	public static IMinecraftNotificationCenter getInstance() {
 		return SingletonHolder.CENTER;
 	}
 
 	private static class SingletonHolder {
-		public static final INotificationCenter CENTER = new NotificationCenter();
+		public static final IMinecraftNotificationCenter CENTER = new NotificationCenter();
 	}
 
 	@Override
-	public void sendMessage(IMessageEvent event) {
+	public void sendMessage(IMinecraftMessageEvent event) {
 		switch (event.getCode().getPermission()) {
 		case ALL:
 			sendMessage(PlayerManager.getPlayers(), event);
@@ -37,7 +38,7 @@ public class NotificationCenter implements INotificationCenter {
 			sendMessage(BukkitManager.getOnlineOperators(), event);
 			break;
 		case SENDER:
-			sendInternalMessage(event);
+			sendMessage(event.getPlayer(), event);
 			break;
 		}
 	}
@@ -47,15 +48,14 @@ public class NotificationCenter implements INotificationCenter {
 		return dictionaryManager;
 	}
 
-	private void sendInternalMessage(IMessageEvent event) {
-		MessageManager.sendMessage(event.getPlayer(), dictionaryManager.getMessage(event));
+	private void sendMessage(Player player, IMinecraftMessageEvent event) {
+		if (player.equals(event.getPlayer()))
+			MessageManager.sendMessage(player, dictionaryManager.getMessage(event));
+		else
+			MessageManager.sendMessage(player, dictionaryManager.getMessage(new MinecraftMessageEvent(player, event.getCode(), event.getArgs())));
 	}
 
-	private void sendMessage(Player player, IMessageEvent event) {
-		sendInternalMessage(EventFactory.messageEvent(player, event.getPlugin(), event.getCode(), event.getArgs()));
-	}
-
-	private void sendMessage(Stream<Player> players, IMessageEvent event) {
+	private void sendMessage(Stream<Player> players, IMinecraftMessageEvent event) {
 		players.parallel().forEach(player -> sendMessage(player, event));
 	}
 }
