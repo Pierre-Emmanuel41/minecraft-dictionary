@@ -13,7 +13,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	private Player player;
 	private IMinecraftMessageCode code;
 
-	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, String... args) {
+	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, Object... args) {
 		super(PlayerManager.getPlayerLocale(player), code, args);
 		this.player = player;
 		this.code = code;
@@ -36,8 +36,8 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 		joiner.add("{Locale=" + getLocale() + "}");
 		joiner.add("{Code=" + getCode() + "}");
 		StringJoiner joinerBis = new StringJoiner(" ", "{Args={", "}}");
-		for (String arg : getArgs())
-			joinerBis.add(arg);
+		for (Object arg : getArgs())
+			joinerBis.add(arg.toString());
 		return joiner.add(joinerBis.toString()).toString();
 	}
 }
