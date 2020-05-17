@@ -6,10 +6,9 @@ import java.nio.file.Path;
 import fr.pederobien.dictionary.interfaces.IDictionary;
 import fr.pederobien.dictionary.interfaces.IDictionaryContext;
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
-import fr.pederobien.persistence.interfaces.IPersistence;
 
 public class JarMinecraftDictionaryParser implements IDictionaryParser {
-	private IPersistence<IDictionary> persistence;
+	private JarMinecraftDictionaryPersistence persistence;
 
 	/**
 	 * Create a dictionary parser when the dictionary file is in a jar file. There are two cases when registering a dictionary from a
@@ -37,5 +36,16 @@ public class JarMinecraftDictionaryParser implements IDictionaryParser {
 		persistence.setPath(path);
 		persistence.load(path.getFileName().toString());
 		return persistence.get();
+	}
+
+	/**
+	 * Set the name of the dictionary to parse. The given name should correspond to the path leading to the dictionary.
+	 * 
+	 * @param name The name of the dictionary to parse.
+	 * 
+	 * @see #JarMinecraftDictionaryParser(String)
+	 */
+	public void setName(String name) {
+		persistence.setName(name);
 	}
 }

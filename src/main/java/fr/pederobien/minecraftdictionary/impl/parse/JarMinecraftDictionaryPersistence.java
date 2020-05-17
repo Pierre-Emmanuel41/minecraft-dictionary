@@ -40,4 +40,13 @@ public class JarMinecraftDictionaryPersistence extends AbstractXmlPersistence<ID
 	public boolean save() {
 		return false;
 	}
+
+	/**
+	 * Set the name of the dictionary to parse;
+	 * 
+	 * @param name The name of the dictionary to launch.
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
 }
