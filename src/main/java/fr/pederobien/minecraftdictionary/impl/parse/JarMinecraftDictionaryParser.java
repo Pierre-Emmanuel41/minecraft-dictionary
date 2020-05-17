@@ -45,7 +45,8 @@ public class JarMinecraftDictionaryParser implements IDictionaryParser {
 	 * 
 	 * @see #JarMinecraftDictionaryParser(String)
 	 */
-	public void setName(String name) {
+	public IDictionaryParser setName(String name) {
 		persistence.setName(name);
+		return this;
 	}
 }
