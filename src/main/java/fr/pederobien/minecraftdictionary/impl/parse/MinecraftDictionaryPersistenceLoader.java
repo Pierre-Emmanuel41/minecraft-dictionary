@@ -20,7 +20,12 @@ public class MinecraftDictionaryPersistenceLoader extends AbstractXmlPersistence
 	private IDictionary dictionary;
 
 	protected MinecraftDictionaryPersistenceLoader() {
-		super(1.0, null);
+		super(1.0);
+	}
+
+	@Override
+	protected IDictionary create() {
+		return null;
 	}
 
 	@Override
