@@ -1,5 +1,6 @@
 package fr.pederobien.minecraftdictionary.impl;
 
+import java.util.Locale;
 import java.util.StringJoiner;
 
 import org.bukkit.entity.Player;
@@ -13,9 +14,32 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	private Player player;
 	private IMinecraftMessageCode code;
 
+	/**
+	 * Create a message event. This event is used to be send to a dictionary to get the translation associated to the given code.
+	 * 
+	 * @param player Used to get its local.
+	 * @param code   Used as key to get the right message in the right dictionary.
+	 * @param args   Some arguments (optional) used for dynamic messages.
+	 * 
+	 * @return A message event based on the given parameter.
+	 */
 	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, Object... args) {
-		super(PlayerManager.getPlayerLocale(player), code, args);
+		super(player != null ? PlayerManager.getPlayerLocale(player) : Locale.ENGLISH, code, args);
 		this.player = player;
+		this.code = code;
+	}
+
+	/**
+	 * Create a message event. This event is used to be send to a dictionary to get the translation associated to the given code. The
+	 * default locale is {@link Locale#ENGLISH}.
+	 * 
+	 * @param code Used as key to get the right message in the right dictionary.
+	 * @param args Some arguments (optional) used for dynamic messages.
+	 * 
+	 * @return A message event based on the given parameter.
+	 */
+	public MinecraftMessageEvent(IMinecraftMessageCode code, Object... args) {
+		super(code, args);
 		this.code = code;
 	}
 
