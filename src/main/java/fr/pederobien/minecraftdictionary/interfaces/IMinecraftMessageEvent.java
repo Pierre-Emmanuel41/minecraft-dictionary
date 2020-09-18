@@ -4,6 +4,8 @@ import org.bukkit.entity.Player;
 
 import fr.pederobien.dictionary.interfaces.IMessageEvent;
 import fr.pederobien.minecraftdictionary.impl.Permission;
+import fr.pederobien.minecraftmanagers.EColor;
+import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
 
 public interface IMinecraftMessageEvent extends IMessageEvent {
 
@@ -19,4 +21,24 @@ public interface IMinecraftMessageEvent extends IMessageEvent {
 	 * @see Permission
 	 */
 	IMinecraftMessageCode getCode();
+
+	/**
+	 * @return The place where the message should be displayed on player screen.
+	 */
+	DisplayOption getDisplayOption();
+
+	/**
+	 * @return If the message should be displayed in italic.
+	 */
+	boolean isItalic();
+
+	/**
+	 * @return If the message should be displayed in bold.
+	 */
+	boolean isBold();
+
+	/**
+	 * @return The message color.
+	 */
+	EColor getColor();
 }

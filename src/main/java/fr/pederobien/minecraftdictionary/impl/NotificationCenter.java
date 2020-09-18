@@ -10,6 +10,7 @@ import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageEvent;
 import fr.pederobien.minecraftdictionary.interfaces.IMinecraftNotificationCenter;
 import fr.pederobien.minecraftmanagers.BukkitManager;
 import fr.pederobien.minecraftmanagers.MessageManager;
+import fr.pederobien.minecraftmanagers.MessageManager.TitleMessage;
 import fr.pederobien.minecraftmanagers.PlayerManager;
 
 public class NotificationCenter implements IMinecraftNotificationCenter {
@@ -53,13 +54,14 @@ public class NotificationCenter implements IMinecraftNotificationCenter {
 	}
 
 	private void sendMessage(Player player, IMinecraftMessageEvent event) {
-		if (player.equals(event.getPlayer()))
-			MessageManager.sendMessage(player, getMessage(event));
-		else
-			MessageManager.sendMessage(player, getMessage(new MinecraftMessageEvent(player, event.getCode(), event.getArgs())));
+		MessageManager.sendMessage(event.getDisplayOption(), player, getAsTitleMessage(event));
 	}
 
 	private void sendMessage(Stream<Player> players, IMinecraftMessageEvent event) {
 		players.parallel().forEach(player -> sendMessage(player, event));
+	}
+
+	private TitleMessage getAsTitleMessage(IMinecraftMessageEvent event) {
+		return TitleMessage.of(getMessage(event), event.isBold(), event.isItalic(), event.getColor());
 	}
 }
