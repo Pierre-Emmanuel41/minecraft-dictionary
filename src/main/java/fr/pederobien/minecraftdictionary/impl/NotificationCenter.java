@@ -54,14 +54,10 @@ public class NotificationCenter implements IMinecraftNotificationCenter {
 	}
 
 	private void sendMessage(Player player, IMinecraftMessageEvent event) {
-		MessageManager.sendMessage(event.getDisplayOption(), player, getAsTitleMessage(event));
+		MessageManager.sendMessage(event.getDisplayOption(), player, TitleMessage.of(getMessage(event), event.isBold(), event.isItalic(), event.getColor()));
 	}
 
 	private void sendMessage(Stream<Player> players, IMinecraftMessageEvent event) {
-		players.parallel().forEach(player -> sendMessage(player, event));
-	}
-
-	private TitleMessage getAsTitleMessage(IMinecraftMessageEvent event) {
-		return TitleMessage.of(getMessage(event), event.isBold(), event.isItalic(), event.getColor());
+		players.forEach(player -> sendMessage(player, event));
 	}
 }
