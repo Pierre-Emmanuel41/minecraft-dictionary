@@ -5,7 +5,7 @@
 	<groupId>fr.pederobien</groupId>
 	<artifactId>minecraft-dictionary</artifactId>
 	<packaging>jar</packaging>
-	<version>2.0</version>
+	<version>2.0_MC_1.13.2</version>
 	<name>minecraft-dictionary</name>
 	<url>http://maven.apache.org</url>
 
