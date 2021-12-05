@@ -3,8 +3,8 @@ package fr.pederobien.minecraft.dictionary.interfaces;
 import org.bukkit.entity.Player;
 
 import fr.pederobien.dictionary.interfaces.IMessageEvent;
-import fr.pederobien.minecraftmanagers.EColor;
-import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
+import fr.pederobien.minecraft.managers.EColor;
+import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
 
 public interface IMinecraftMessageEvent extends IMessageEvent {
 

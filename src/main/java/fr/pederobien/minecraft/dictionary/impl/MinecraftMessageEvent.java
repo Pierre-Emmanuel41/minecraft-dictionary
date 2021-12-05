@@ -8,9 +8,9 @@ import org.bukkit.entity.Player;
 import fr.pederobien.dictionary.impl.MessageEvent;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
-import fr.pederobien.minecraftmanagers.EColor;
-import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
-import fr.pederobien.minecraftmanagers.PlayerManager;
+import fr.pederobien.minecraft.managers.EColor;
+import fr.pederobien.minecraft.managers.PlayerManager;
+import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
 
 public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMessageEvent {
 	private Player player;

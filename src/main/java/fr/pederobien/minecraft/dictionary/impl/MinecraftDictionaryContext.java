@@ -14,8 +14,8 @@ import fr.pederobien.dictionary.interfaces.IDictionaryContext;
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
 import fr.pederobien.dictionary.interfaces.IMessageEvent;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
-import fr.pederobien.minecraftmanagers.MessageManager;
-import fr.pederobien.minecraftmanagers.MessageManager.TitleMessage;
+import fr.pederobien.minecraft.managers.MessageManager;
+import fr.pederobien.minecraft.managers.MessageManager.TitleMessage;
 
 public class MinecraftDictionaryContext implements IDictionaryContext {
 	private IDictionaryContext context;
