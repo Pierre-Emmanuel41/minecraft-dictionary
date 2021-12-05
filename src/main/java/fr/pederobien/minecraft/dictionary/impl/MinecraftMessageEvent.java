@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftdictionary.impl;
+package fr.pederobien.minecraft.dictionary.impl;
 
 import java.util.Locale;
 import java.util.StringJoiner;
@@ -6,8 +6,8 @@ import java.util.StringJoiner;
 import org.bukkit.entity.Player;
 
 import fr.pederobien.dictionary.impl.MessageEvent;
-import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageCode;
-import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageEvent;
+import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageCode;
+import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
 import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
 import fr.pederobien.minecraftmanagers.PlayerManager;

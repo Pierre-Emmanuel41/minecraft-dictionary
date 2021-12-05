@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>fr.pederobien</groupId>
-	<artifactId>minecraft-dictionary</artifactId>
+	<artifactId>minecraft.dictionary</artifactId>
 	<packaging>jar</packaging>
 	<version>3.0_MC_1.13.2-SNAPSHOT</version>
 	<name>minecraft-dictionary</name>

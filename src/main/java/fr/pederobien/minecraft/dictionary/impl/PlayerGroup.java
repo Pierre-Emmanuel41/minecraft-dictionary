@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftdictionary.impl;
+package fr.pederobien.minecraft.dictionary.impl;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -8,7 +8,7 @@ import java.util.stream.Stream;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
-import fr.pederobien.minecraftdictionary.interfaces.IPlayerGroup;
+import fr.pederobien.minecraft.dictionary.interfaces.IPlayerGroup;
 
 public class PlayerGroup implements IPlayerGroup {
 

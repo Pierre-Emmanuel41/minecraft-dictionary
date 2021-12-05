@@ -1,8 +1,8 @@
-package fr.pederobien.minecraftdictionary.impl;
+package fr.pederobien.minecraft.dictionary.impl;
 
 import fr.pederobien.dictionary.impl.MessageCode;
-import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageCode;
-import fr.pederobien.minecraftdictionary.interfaces.IPlayerGroup;
+import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageCode;
+import fr.pederobien.minecraft.dictionary.interfaces.IPlayerGroup;
 
 public class MinecraftMessageCode extends MessageCode implements IMinecraftMessageCode {
 	private IPlayerGroup group;

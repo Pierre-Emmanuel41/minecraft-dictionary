@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftdictionary.impl;
+package fr.pederobien.minecraft.dictionary.impl;
 
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
@@ -13,7 +13,7 @@ import fr.pederobien.dictionary.interfaces.IDictionary;
 import fr.pederobien.dictionary.interfaces.IDictionaryContext;
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
 import fr.pederobien.dictionary.interfaces.IMessageEvent;
-import fr.pederobien.minecraftdictionary.interfaces.IMinecraftMessageEvent;
+import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
 import fr.pederobien.minecraftmanagers.MessageManager;
 import fr.pederobien.minecraftmanagers.MessageManager.TitleMessage;
 

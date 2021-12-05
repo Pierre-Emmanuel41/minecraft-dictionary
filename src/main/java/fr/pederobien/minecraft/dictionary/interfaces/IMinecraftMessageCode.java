@@ -1,4 +1,4 @@
-package fr.pederobien.minecraftdictionary.interfaces;
+package fr.pederobien.minecraft.dictionary.interfaces;
 
 import fr.pederobien.dictionary.interfaces.IMessageCode;
 
