@@ -5,4 +5,5 @@
 [submodule "dictionary"]
 	path = dictionary
 	url = https://github.com/Pierre-Emmanuel41/dictionary.git
+	update = rebase
 	branch = master

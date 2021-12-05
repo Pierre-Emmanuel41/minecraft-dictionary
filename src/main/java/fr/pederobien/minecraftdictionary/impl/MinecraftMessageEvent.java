@@ -204,15 +204,15 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 
 	@Override
 	public String toString() {
-		StringJoiner joiner = new StringJoiner(",\n", "{MessageEvent=", "}");
-		joiner.add("{Player=" + getPlayer().getName() + "}");
-		joiner.add("{Locale=" + getLocale() + "}");
-		joiner.add("{Code=" + getCode() + "}");
-		joiner.add("{displayOption=" + getDisplayOption() + "}");
-		joiner.add("{isItalic=" + isItalic() + "}");
-		joiner.add("{isBold=" + isBold + "}");
-		joiner.add("{color=" + getColor() + "}");
-		StringJoiner joinerBis = new StringJoiner(" ", "{Args={", "}}");
+		StringJoiner joiner = new StringJoiner(",\n", "{", "}");
+		joiner.add("Player=" + getPlayer().getName());
+		joiner.add("Locale=" + getLocale());
+		joiner.add("Code=" + getCode());
+		joiner.add("displayOption=" + getDisplayOption());
+		joiner.add("isItalic=" + isItalic());
+		joiner.add("isBold=" + isBold);
+		joiner.add("color=" + getColor());
+		StringJoiner joinerBis = new StringJoiner(" ", "Args={", "}");
 		for (Object arg : getArgs())
 			joinerBis.add(arg.toString());
 		return joiner.add(joinerBis.toString()).toString();

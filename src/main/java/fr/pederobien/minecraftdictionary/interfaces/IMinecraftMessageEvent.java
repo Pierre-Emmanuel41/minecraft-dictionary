@@ -3,7 +3,6 @@ package fr.pederobien.minecraftdictionary.interfaces;
 import org.bukkit.entity.Player;
 
 import fr.pederobien.dictionary.interfaces.IMessageEvent;
-import fr.pederobien.minecraftdictionary.impl.Permission;
 import fr.pederobien.minecraftmanagers.EColor;
 import fr.pederobien.minecraftmanagers.MessageManager.DisplayOption;
 
@@ -18,7 +17,6 @@ public interface IMinecraftMessageEvent extends IMessageEvent {
 	 * @return A minecraft message event which is a simple simple message event with permission.
 	 * 
 	 * @see IMessageEvent
-	 * @see Permission
 	 */
 	IMinecraftMessageCode getCode();
 

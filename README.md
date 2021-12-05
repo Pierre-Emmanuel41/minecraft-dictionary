@@ -1,30 +1,24 @@
-# Minecraft-dictionary
+# Presentation
 
-Nowadays, it is very nice when an application can support several languages in order to be used all around the world. Each company/developers has its own way to do so but, most of the time, the displayed messages are hardcoded and it is not easy to add another language. This project is a simple tool that provides an easy way to register/load dictionary for multi-languages application. The goal is to use code that represent a message on user screen. Using this, the developer does'nt know which message is displayed, but only the code associated to message.
+Nowadays, it is very nice when an application can support several languages in order to be used all around the world. Each company/developers has its own way to do so but, most of the time, the displayed messages are hardcoded and it is not easy to add another language. This project is the continuity of the [dictionary](https://github.com/Pierre-Emmanuel41/dictionary.git) project which provides an architecture for translated messages.  
+The goal of this project is to propose simple tools for minecraft to send/receive messages according to the nationality of players.
 
-# Register as maven dependency
+# Download
 
-It is easy to register this project as dependency for your own project. To do so, you need to download this project.
-First, you need to download this project on your machine.
-
-The easiest way to do so is to use the following git command line 
+First you need to download this project on your computer. To do so, you can use the following command line :
 
 ```git
 git clone https://github.com/Pierre-Emmanuel41/minecraft-dictionary.git --recursive
 ```
-Indeed, this project depends on differents projects : [persistence](https://github.com/Pierre-Emmanuel41/persistence), [dictionary](https://github.com/Pierre-Emmanuel41/dictionary) and [minecraft-managers](https://github.com/Pierre-Emmanuel41/minecraft-managers) and need to be downloaded on your machine to avoid compilation errors.
 
-Then, you only need to run the file deploy.bat. This file will create the maven projects in your .m2 project
-
-Finally, in the pom.xml of your project, you have to add the following lines :
+and then double click on the deploy.bat file. This will deploy this project and all its dependencies on your computer. Which means it generates the folder associated to this project and its dependencies in your .m2 folder. Once this has been done, you can add the project as maven dependency on your maven project :
 
 ```xml
 <dependency>
 	<groupId>fr.pederobien</groupId>
 	<artifactId>minecraft-dictionary</artifactId>
-	<version>1.0</version>
+	<version>3.0_MC_1.13.2-SNAPSHOT</version>
 </dependency>
 ```
-You can now use features provided by this api in you project.
 
 To see how you can use thoses features, please have a look to [This tutorial](https://github.com/Pierre-Emmanuel41/minecraft-dictionary/blob/master/Tutorial.md)

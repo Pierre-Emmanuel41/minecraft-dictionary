@@ -1,4 +1,7 @@
-cd dictionary/persistence
+cd dictionary/persistence/utils
+call mvn clean package install
+
+cd ..
 call mvn clean package install
 
 cd ..

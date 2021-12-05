@@ -1,19 +1,18 @@
 package fr.pederobien.minecraftdictionary.interfaces;
 
 import fr.pederobien.dictionary.interfaces.IMessageCode;
-import fr.pederobien.minecraftdictionary.impl.Permission;
 
 public interface IMinecraftMessageCode extends IMessageCode {
 
 	/**
-	 * @return The permission used to send the message.
+	 * @return the group of player that should receive the message.
 	 */
-	Permission getPermission();
+	IPlayerGroup getGroup();
 
 	/**
-	 * Set the new permission of this message code.
+	 * Set the group of player that should receive the message.
 	 * 
-	 * @param permission The new permission of this message.
+	 * @param group The new group associated to this message.
 	 */
-	void setPermission(Permission permission);
+	void setGroup(IPlayerGroup group);
 }
