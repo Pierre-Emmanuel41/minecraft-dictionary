@@ -1,10 +1,10 @@
 package fr.pederobien.minecraft.dictionary.impl;
 
 import fr.pederobien.dictionary.impl.MessageCode;
-import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageCode;
+import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IPlayerGroup;
 
-public class MinecraftMessageCode extends MessageCode implements IMinecraftMessageCode {
+public class MinecraftMessageCode extends MessageCode implements IMinecraftCode {
 	private IPlayerGroup group;
 
 	/**

@@ -6,7 +6,7 @@ import java.util.StringJoiner;
 import org.bukkit.entity.Player;
 
 import fr.pederobien.dictionary.impl.MessageEvent;
-import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageCode;
+import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
 import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.PlayerManager;
@@ -14,7 +14,7 @@ import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
 
 public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMessageEvent {
 	private Player player;
-	private IMinecraftMessageCode code;
+	private IMinecraftCode code;
 	private DisplayOption displayOption;
 	private boolean isItalic, isBold;
 	private EColor color;
@@ -32,7 +32,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, DisplayOption displayOption, boolean isItalic, boolean isBold, EColor color, Object... args) {
+	public MinecraftMessageEvent(Player player, IMinecraftCode code, DisplayOption displayOption, boolean isItalic, boolean isBold, EColor color, Object... args) {
 		super(player != null ? PlayerManager.getPlayerLocale(player) : Locale.ENGLISH, code, args);
 		this.player = player;
 		this.code = code;
@@ -54,7 +54,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(IMinecraftMessageCode code, DisplayOption displayOption, boolean isItalic, boolean isBold, EColor color, Object... args) {
+	public MinecraftMessageEvent(IMinecraftCode code, DisplayOption displayOption, boolean isItalic, boolean isBold, EColor color, Object... args) {
 		super(code, args);
 		this.code = code;
 		this.displayOption = displayOption;
@@ -74,7 +74,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, DisplayOption displayOption, EColor color, Object... args) {
+	public MinecraftMessageEvent(Player player, IMinecraftCode code, DisplayOption displayOption, EColor color, Object... args) {
 		this(player, code, displayOption, false, false, color, args);
 	}
 
@@ -88,7 +88,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(IMinecraftMessageCode code, DisplayOption displayOption, EColor color, Object... args) {
+	public MinecraftMessageEvent(IMinecraftCode code, DisplayOption displayOption, EColor color, Object... args) {
 		this(code, displayOption, false, false, color, args);
 	}
 
@@ -102,7 +102,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, DisplayOption displayOption, Object... args) {
+	public MinecraftMessageEvent(Player player, IMinecraftCode code, DisplayOption displayOption, Object... args) {
 		this(player, code, displayOption, false, false, EColor.WHITE, args);
 	}
 
@@ -116,7 +116,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, EColor color, Object... args) {
+	public MinecraftMessageEvent(Player player, IMinecraftCode code, EColor color, Object... args) {
 		this(player, code, DisplayOption.CONSOLE, false, false, color, args);
 	}
 
@@ -129,7 +129,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(IMinecraftMessageCode code, DisplayOption displayOption, Object... args) {
+	public MinecraftMessageEvent(IMinecraftCode code, DisplayOption displayOption, Object... args) {
 		this(code, displayOption, false, false, EColor.WHITE, args);
 	}
 
@@ -142,7 +142,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(IMinecraftMessageCode code, EColor color, Object... args) {
+	public MinecraftMessageEvent(IMinecraftCode code, EColor color, Object... args) {
 		this(code, DisplayOption.CONSOLE, false, false, color, args);
 	}
 
@@ -155,7 +155,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(Player player, IMinecraftMessageCode code, Object... args) {
+	public MinecraftMessageEvent(Player player, IMinecraftCode code, Object... args) {
 		this(player, code, DisplayOption.CONSOLE, false, false, EColor.WHITE, args);
 	}
 
@@ -168,7 +168,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * 
 	 * @return A message event based on the given parameter.
 	 */
-	public MinecraftMessageEvent(IMinecraftMessageCode code, Object... args) {
+	public MinecraftMessageEvent(IMinecraftCode code, Object... args) {
 		this(code, DisplayOption.CONSOLE, false, false, EColor.WHITE, args);
 	}
 
@@ -178,7 +178,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	}
 
 	@Override
-	public IMinecraftMessageCode getCode() {
+	public IMinecraftCode getCode() {
 		return code;
 	}
 
