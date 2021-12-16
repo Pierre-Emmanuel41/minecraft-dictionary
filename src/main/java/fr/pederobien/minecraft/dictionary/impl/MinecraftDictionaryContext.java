@@ -27,7 +27,7 @@ public class MinecraftDictionaryContext implements IDictionaryContext {
 	/**
 	 * @return The unique instance of this dictionary context.
 	 */
-	public static MinecraftDictionaryContext getInstance() {
+	public static MinecraftDictionaryContext instance() {
 		return SingletonHolder.CONTEXT;
 	}
 
