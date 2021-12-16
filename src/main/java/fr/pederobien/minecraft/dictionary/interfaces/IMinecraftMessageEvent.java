@@ -18,7 +18,7 @@ public interface IMinecraftMessageEvent extends IMessageEvent {
 	 * 
 	 * @see IMessageEvent
 	 */
-	IMinecraftCode getCode();
+	IMinecraftCode getMinecraftCode();
 
 	/**
 	 * @return The place where the message should be displayed on player screen.

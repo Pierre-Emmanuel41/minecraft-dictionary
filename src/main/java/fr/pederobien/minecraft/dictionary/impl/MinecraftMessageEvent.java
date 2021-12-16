@@ -9,8 +9,8 @@ import fr.pederobien.dictionary.impl.MessageEvent;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
 import fr.pederobien.minecraft.managers.EColor;
-import fr.pederobien.minecraft.managers.PlayerManager;
 import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
+import fr.pederobien.minecraft.managers.PlayerManager;
 
 public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMessageEvent {
 	private Player player;
@@ -33,7 +33,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * @return A message event based on the given parameter.
 	 */
 	public MinecraftMessageEvent(Player player, IMinecraftCode code, DisplayOption displayOption, boolean isItalic, boolean isBold, EColor color, Object... args) {
-		super(player != null ? PlayerManager.getPlayerLocale(player) : Locale.ENGLISH, code, args);
+		super(player != null ? PlayerManager.getPlayerLocale(player) : Locale.ENGLISH, code.value(), args);
 		this.player = player;
 		this.code = code;
 		this.displayOption = displayOption;
@@ -55,7 +55,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * @return A message event based on the given parameter.
 	 */
 	public MinecraftMessageEvent(IMinecraftCode code, DisplayOption displayOption, boolean isItalic, boolean isBold, EColor color, Object... args) {
-		super(code, args);
+		super(code.value(), args);
 		this.code = code;
 		this.displayOption = displayOption;
 		this.isItalic = isItalic;
@@ -178,7 +178,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	}
 
 	@Override
-	public IMinecraftCode getCode() {
+	public IMinecraftCode getMinecraftCode() {
 		return code;
 	}
 

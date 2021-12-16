@@ -1,10 +1,10 @@
 package fr.pederobien.minecraft.dictionary.impl;
 
-import fr.pederobien.dictionary.impl.MessageCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IPlayerGroup;
 
-public class MinecraftMessageCode extends MessageCode implements IMinecraftCode {
+public class MinecraftMessageCode implements IMinecraftCode {
+	private String value;
 	private IPlayerGroup group;
 
 	/**
@@ -14,12 +14,17 @@ public class MinecraftMessageCode extends MessageCode implements IMinecraftCode 
 	 * @param group The player group that will receive the message.
 	 */
 	public MinecraftMessageCode(String value, IPlayerGroup group) {
-		super(value);
+		this.value = value;
 		this.group = group;
 	}
 
 	public MinecraftMessageCode(String value) {
 		this(value, PlayerGroup.OPERATORS);
+	}
+
+	@Override
+	public String value() {
+		return value;
 	}
 
 	@Override

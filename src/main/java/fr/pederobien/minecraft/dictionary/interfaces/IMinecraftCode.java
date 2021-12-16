@@ -1,8 +1,11 @@
 package fr.pederobien.minecraft.dictionary.interfaces;
 
-import fr.pederobien.dictionary.interfaces.ICode;
+public interface IMinecraftCode {
 
-public interface IMinecraftCode extends ICode {
+	/**
+	 * @return The value represented by this message code.
+	 */
+	String value();
 
 	/**
 	 * @return the group of player that should receive the message.

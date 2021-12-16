@@ -21,7 +21,7 @@ public class MinecraftDictionaryContext implements IDictionaryContext {
 	private IDictionaryContext context;
 
 	private MinecraftDictionaryContext() {
-		context = DictionaryContext.getInstance();
+		context = new DictionaryContext();
 	}
 
 	/**
@@ -76,7 +76,7 @@ public class MinecraftDictionaryContext implements IDictionaryContext {
 	 * @param event The event used to get which message should be send, and to who the message should be sent.
 	 */
 	public void send(IMinecraftMessageEvent event) {
-		event.getCode().getGroup().toStream().forEach(player -> sendMessage(player, event));
+		event.getMinecraftCode().getGroup().toStream().forEach(player -> sendMessage(player, event));
 	}
 
 	private void sendMessage(Player player, IMinecraftMessageEvent event) {
