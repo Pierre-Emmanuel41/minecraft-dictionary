@@ -9,6 +9,11 @@ import org.bukkit.entity.Player;
 public interface IPlayerGroup {
 
 	/**
+	 * @return The name of this group of players.
+	 */
+	String getName();
+
+	/**
 	 * @return The predicate used to filter the collection of connected players.
 	 */
 	Predicate<Player> getPredicate();

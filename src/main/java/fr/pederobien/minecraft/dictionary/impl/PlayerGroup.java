@@ -15,35 +15,44 @@ public class PlayerGroup implements IPlayerGroup {
 	/**
 	 * Creates a group that contains all players.
 	 */
-	public static final IPlayerGroup All = of(player -> true);
+	public static final IPlayerGroup ALL = of("all", player -> true);
 
 	/**
 	 * Creates a group that contains only operators.
 	 */
-	public static final IPlayerGroup OPERATORS = of(player -> player.isOp());
+	public static final IPlayerGroup OPERATORS = of("operators", player -> player.isOp());
 
+	private String name;
 	private Predicate<Player> predicate;
 
 	/**
 	 * Creates a group of player based on the current logged players and filter the collection of connected player according to the
 	 * given predicate.
 	 * 
+	 * @param name      The name of this group of players.
 	 * @param predicate The predicate used to filter the connection players.
 	 * 
 	 * @return A new player group.
 	 */
-	public static PlayerGroup of(Predicate<Player> predicate) {
-		return new PlayerGroup(predicate);
+	public static PlayerGroup of(String name, Predicate<Player> predicate) {
+		return new PlayerGroup(name, predicate);
 	}
 
 	/**
 	 * Creates a group of player based on the current logged players and filter the collection of connected player according to the
 	 * given predicate.
 	 * 
+	 * @param name      The name of this group of players.
 	 * @param predicate The predicate used to filter the connection players.
 	 */
-	private PlayerGroup(Predicate<Player> predicate) {
+	private PlayerGroup(String name, Predicate<Player> predicate) {
+		this.name = name;
 		this.predicate = predicate;
+	}
+
+	@Override
+	public String getName() {
+		return name;
 	}
 
 	@Override
@@ -59,5 +68,10 @@ public class PlayerGroup implements IPlayerGroup {
 	@Override
 	public List<? extends Player> toList() {
 		return Bukkit.getOnlinePlayers().stream().filter(predicate).collect(Collectors.toList());
+	}
+
+	@Override
+	public String toString() {
+		return name;
 	}
 }
