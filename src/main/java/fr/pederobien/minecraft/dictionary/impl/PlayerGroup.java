@@ -13,6 +13,11 @@ import fr.pederobien.minecraft.dictionary.interfaces.IPlayerGroup;
 public class PlayerGroup implements IPlayerGroup {
 
 	/**
+	 * Creates a group that contains no player.
+	 */
+	public static final IPlayerGroup EMPTY = of("empty", player -> false);
+
+	/**
 	 * Creates a group that contains all players.
 	 */
 	public static final IPlayerGroup ALL = of("all", player -> true);
