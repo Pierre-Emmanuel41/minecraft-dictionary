@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
 
+import org.bukkit.GameRule;
 import org.bukkit.entity.Player;
 
 import fr.pederobien.dictionary.impl.DictionaryContext;
@@ -80,6 +81,17 @@ public class MinecraftDictionaryContext implements IDictionaryContext {
 	}
 
 	private void sendMessage(Player player, IMinecraftMessageEvent event) {
-		MessageManager.sendMessage(event.getDisplayOption(), player, TitleMessage.of(getMessage(event), event.isBold(), event.isItalic(), event.getColor()));
+		if (!event.isSynchro() || player.getWorld().getGameRuleDefault(GameRule.SEND_COMMAND_FEEDBACK))
+			MessageManager.sendMessage(event.getDisplayOption(), player, TitleMessage.of(format(event), event.isBold(), event.isItalic(), event.getColor()));
+	}
+
+	private String format(IMinecraftMessageEvent event) {
+		String message = "";
+		if (event.getPrefix() != null)
+			message = event.getPrefix();
+		message += getMessage(event);
+		if (event.getSuffix() != null)
+			message += event.getSuffix();
+		return message;
 	}
 }
