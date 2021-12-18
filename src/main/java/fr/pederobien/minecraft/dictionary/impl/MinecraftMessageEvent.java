@@ -158,6 +158,18 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 		}
 
 		/**
+		 * Set the event locale.
+		 * 
+		 * @param locale The locale used to display a translated message.
+		 * 
+		 * @return This builder.
+		 */
+		public MinecraftMessageEventBuilder withLocale(Locale locale) {
+			this.locale = locale;
+			return this;
+		}
+
+		/**
 		 * Set the event prefix.
 		 * 
 		 * @param prefix The string to display before the message.
