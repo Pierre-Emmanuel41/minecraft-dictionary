@@ -4,10 +4,10 @@ Please see in details [This tutorial](https://github.com/Pierre-Emmanuel41/dicti
 
 # Minecraft specific
 
-To get messages, we need to use a <code>MinecraftMessageEvent</code>. This event provides all needed informations for the dictionary context, the dictionary, the stored messages and the group of players that will receive the message. There is a lot of constructors for this class. Those constructors can be usefull if you want to modify the default style of the message. The most important class associated to this event is the implementation of the interface <code>IMinecraftMessageCode</code>. This interface provides two additional methods comparing to the IMessageCode : getGroup and setGroup. Indeed, when a plugin send a message, a group must be specified. There are two already implemented group : ALL and OPERATORS and can be found [here](https://github.com/Pierre-Emmanuel41/minecraft-dictionary/tree/master/src/main/java/fr/pederobien/minecraftdictionary/impl/PlayerGroup.java). The following code represent one possible implementation of this interface. The message associated to the <code>CODE_1</code> will only be sent to the operators of the server and the message associated to the <code>CODE_2</code> will be sent to all players.
+To get messages, we need to use a <code>MinecraftMessageEvent</code>. This event provides all needed informations for the dictionary context, the dictionary, the stored messages and the group of players that will receive the message. There is a lot of constructors for this class. Those constructors can be usefull if you want to modify the default style of the message. The most important class associated to this event is the implementation of the interface <code>IMinecraftMessageCode</code>. This interface provides two additional methods comparing to the IMessageCode : getGroup and setGroup. Indeed, when a plugin send a message, a group must be specified. There are two already implemented group : ALL and OPERATORS and can be found [here](https://github.com/Pierre-Emmanuel41/minecraft-dictionary/tree/master/src/main/java/fr/pederobien/minecraft/dictionary/impl/PlayerGroup.java). The following code represent one possible implementation of this interface. The message associated to the <code>CODE_1</code> will only be sent to the operators of the server and the message associated to the <code>CODE_2</code> will be sent to all players.
 
 ```java
-	public enum EMessageCode implements IMinecraftMessageCode {
+	public enum EMessageCode implements IMinecraftCode {
 	CODE_1, CODE_2(PlayerGroup.ALL);
 	
 	private IPlayerGroup group;
@@ -32,7 +32,12 @@ To get messages, we need to use a <code>MinecraftMessageEvent</code>. This event
 
 	@Override
 	public String value() {
-		return toString();
+		return name();
+	}
+	
+	@Override
+	public String toString() {
+		return String.format("value=%s,group=%s", value(), getGroup());
 	}
 }
 ```
