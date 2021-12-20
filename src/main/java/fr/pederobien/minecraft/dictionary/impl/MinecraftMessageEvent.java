@@ -195,6 +195,19 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 		}
 
 		/**
+		 * Set the event prefix.
+		 * 
+		 * @param prefix The string to display before the message.
+		 * @param color  The suffix color.
+		 * 
+		 * @return This builder.
+		 */
+		public MinecraftMessageEventBuilder withPrefix(String prefix, EColor color) {
+			this.prefix = color.getInColor(prefix);
+			return this;
+		}
+
+		/**
 		 * Set the event suffix.
 		 * 
 		 * @param suffix The string to display after the message.
@@ -203,6 +216,19 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 		 */
 		public MinecraftMessageEventBuilder withSuffix(String suffix) {
 			this.suffix = suffix;
+			return this;
+		}
+
+		/**
+		 * Set the event suffix.
+		 * 
+		 * @param suffix The string to display after the message.
+		 * @param color  The suffix color.
+		 * 
+		 * @return This builder.
+		 */
+		public MinecraftMessageEventBuilder withSuffix(String suffix, EColor color) {
+			this.suffix = color.getInColor(suffix);
 			return this;
 		}
 
