@@ -198,7 +198,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 		 * Set the event prefix.
 		 * 
 		 * @param prefix The string to display before the message.
-		 * @param color  The suffix color.
+		 * @param color  The prefix color.
 		 * 
 		 * @return This builder.
 		 */
