@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import fr.pederobien.dictionary.impl.MessageEvent;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftCode;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
+import fr.pederobien.minecraft.dictionary.interfaces.IPlayerGroup;
 import fr.pederobien.minecraft.managers.EColor;
 import fr.pederobien.minecraft.managers.MessageManager.DisplayOption;
 import fr.pederobien.minecraft.managers.PlayerManager;
@@ -155,6 +156,18 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 
 		public MinecraftMessageEventBuilder(IMinecraftCode code) {
 			this(null, code);
+		}
+
+		/**
+		 * Set the code players group.
+		 * 
+		 * @param group The group of players that should receive the underlying message.
+		 * 
+		 * @return This builder.
+		 */
+		public MinecraftMessageEventBuilder withGroup(IPlayerGroup group) {
+			code.setGroup(group);
+			return this;
 		}
 
 		/**
