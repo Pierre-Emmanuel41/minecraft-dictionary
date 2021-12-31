@@ -61,7 +61,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 * @return A new instance of a minecraft message event builder.
 	 */
 	public static MinecraftMessageEventBuilder builder(CommandSender sender, IMinecraftCode code) {
-		return new MinecraftMessageEventBuilder(code);
+		return new MinecraftMessageEventBuilder(sender, code);
 	}
 
 	/**

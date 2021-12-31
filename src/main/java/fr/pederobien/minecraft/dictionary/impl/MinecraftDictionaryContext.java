@@ -14,6 +14,7 @@ import fr.pederobien.dictionary.interfaces.IDictionaryContext;
 import fr.pederobien.dictionary.interfaces.IDictionaryParser;
 import fr.pederobien.dictionary.interfaces.IMessageEvent;
 import fr.pederobien.minecraft.dictionary.interfaces.IMinecraftMessageEvent;
+import fr.pederobien.minecraft.managers.BukkitManager;
 import fr.pederobien.minecraft.managers.MessageManager;
 import fr.pederobien.minecraft.managers.MessageManager.TitleMessage;
 
@@ -76,19 +77,20 @@ public class MinecraftDictionaryContext implements IDictionaryContext {
 	 * @param event The event used to get which message should be send, and to who the message should be sent.
 	 */
 	public void send(IMinecraftMessageEvent event) {
+		BukkitManager.getConsoleSender().sendMessage(getMessage(event));
 		event.getMinecraftCode().getGroup().toStream().forEach(player -> sendMessage(player, event));
 	}
 
 	private void sendMessage(Player player, IMinecraftMessageEvent event) {
 		if (!event.isSynchro() || player.getWorld().getGameRuleDefault(GameRule.SEND_COMMAND_FEEDBACK))
-			MessageManager.sendMessage(event.getDisplayOption(), player, TitleMessage.of(format(event), event.isBold(), event.isItalic(), event.getColor()));
+			MessageManager.sendMessage(event.getDisplayOption(), player, TitleMessage.of(format(event), event.isBold(), event.isItalic()));
 	}
 
 	private String format(IMinecraftMessageEvent event) {
 		String message = "";
 		if (event.getPrefix() != null)
 			message = event.getPrefix();
-		message += getMessage(event);
+		message += event.getColor().getInColor(getMessage(event));
 		if (event.getSuffix() != null)
 			message += event.getSuffix();
 		return message;
