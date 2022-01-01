@@ -1,6 +1,5 @@
 package fr.pederobien.minecraft.dictionary.impl;
 
-import java.io.FileNotFoundException;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Optional;
@@ -47,7 +46,7 @@ public class MinecraftDictionaryContext implements IDictionaryContext {
 	}
 
 	@Override
-	public IDictionaryContext register(String path) throws FileNotFoundException {
+	public IDictionaryContext register(String path) throws Exception {
 		return context.register(path);
 	}
 
