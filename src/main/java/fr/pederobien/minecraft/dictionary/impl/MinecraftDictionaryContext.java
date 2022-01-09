@@ -76,7 +76,7 @@ public class MinecraftDictionaryContext implements IDictionaryContext {
 	 * @param event The event used to get which message should be send, and to who the message should be sent.
 	 */
 	public void send(IMinecraftMessageEvent event) {
-		BukkitManager.getConsoleSender().sendMessage(getMessage(event));
+		BukkitManager.getConsoleSender().sendMessage(format(event));
 		event.getMinecraftCode().getGroup().toStream().forEach(player -> sendMessage(player, event));
 	}
 
