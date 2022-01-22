@@ -2,7 +2,7 @@
 	path = minecraft-managers
 	url = https://github.com/Pierre-Emmanuel41/minecraft-managers.git
 	update = rebase
-	branch = 3.0_MC_1.13.2-SNAPSHOT
+	branch = 3.0_MC_1.16.5-SNAPSHOT
 [submodule "dictionary"]
 	path = dictionary
 	url = https://github.com/Pierre-Emmanuel41/dictionary.git
