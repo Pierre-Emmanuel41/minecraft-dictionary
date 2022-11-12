@@ -41,7 +41,7 @@ public class MinecraftMessageEvent extends MessageEvent implements IMinecraftMes
 	 */
 	private MinecraftMessageEvent(Locale locale, IMinecraftCode code, String prefix, String suffix, DisplayOption displayOption, boolean isSynchro, boolean isItalic,
 			boolean isBold, EColor color, Object... args) {
-		super(locale, code.value(), args);
+		super(locale, code, args);
 		this.code = code;
 		this.prefix = prefix;
 		this.suffix = suffix;
